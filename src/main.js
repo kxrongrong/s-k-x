@@ -16,8 +16,16 @@ import app from './App.vue'
 import { Header,Swipe, SwipeItem } from 'mint-ui';
 //导入vue-resource
 import VueResource from 'vue-resource'
+//导入格式化时间的插件
+import moment from 'moment'
+//定义全局过滤器
+Vue.filter('dateFormat',function(dataStr,pattern="YYYY_MM_DD HH:mm:ss"){
+    return moment(dataStr).format(pattern)
+})
 //安装vue-resource
 Vue.use(VueResource)
+//添加一个根路径
+Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
 //导入自己的路有模块
 import router from './router.js'

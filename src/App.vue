@@ -38,6 +38,7 @@
 .app-container {
   /* background-color: red; */
   padding-top: 40px;
+	padding-bottom: 50px;
 	/* 解决页面动画的时候出现滚动条 */
 	overflow-x: hidden;
 }
