@@ -50,7 +50,7 @@
 .v-leave-to{
 	opacity: 0;
 	transform: translateX(-100%);
-	/* 为阻止动画运行过程中上漂的问题在其离开的实惠给绝对定位 */
+	/* 为阻止动画运行过程中上漂的问题加上绝对定位这样就不占位置了，在他离开的时候后面进来的元素就可以直接在上面显示而不会被挤下来从而引起上漂问题 */
 	position: absolute;
 }
 .v-enter-active,
