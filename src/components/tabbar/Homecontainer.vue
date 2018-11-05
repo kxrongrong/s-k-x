@@ -1,14 +1,13 @@
 <template>
     <div>
-        <mt-swipe :auto="4000">
-          <!-- <mt-swipe-item v-for="item in lunbotulis" :key="item.url">
-              <img src="{{item.img}}" alt="">
-          </mt-swipe-item> -->
-          <mt-swipe-item>1</mt-swipe-item>
-          <mt-swipe-item>2</mt-swipe-item>
-          <mt-swipe-item>3</mt-swipe-item> 
-        </mt-swipe>
         <!-- 轮播图 -->
+        <mt-swipe :auto="4000">
+          <mt-swipe-item v-for="(item, index) in lunbotulist" :key="index">
+             <img :src="item.img" alt="">
+          </mt-swipe-item>
+         
+        </mt-swipe>
+        
         <ul class="mui-table-view mui-grid-view mui-grid-6">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4"><router-link to="/home/newlist">
 		                   <img src="../../images/menu1.png" alt="">
@@ -32,55 +31,52 @@
     </div>
 </template>
 <script>
-import { Toast } from 'mint-ui';
-export default{
-    data(){
-        return{
-            lunbotulist:[]//保存轮播图数据
-        }
-    },
-    created(){
-     getlunbotu()
-    },
-    methods:{
-        getlunbotu(){
-            //获取轮播图数据的方法
-            this.$http.get("http://www.liulongbin.top:3005/api/getlunbo").then(result=>{
-                if(result.body.status===0){
-                    // this.lunbotulist=result.body.message
-                    console.log(result.body);
-                    
-
-                }else{
-                Toast('轮播图加载失败。。。。。');
-                }
-            })
-        }
+import { Toast } from 'mint-ui'
+export default {
+  data() {
+    return {
+      lunbotulist: [] //保存轮播图数据
     }
+  },
+  methods: {
+    getlunbotu() {
+      //获取轮播图数据的方法
+      this.$http
+        .get('http://www.liulongbin.top:3005/api/getlunbo')
+        .then(result => {
+          if (result.body.status === 0) {
+            this.lunbotulist=result.body.message
+            // console.log(result.body.message)
+          } else {
+            Toast('轮播图加载失败。。。。。')
+          }
+        })
+    }
+  },
 
+  created() {
+      this.getlunbotu()
+  }
 }
-    
 </script>
 <style scoped>
-.mint-swipe{
-    height: 200px;
-    background-color: lawngreen
+.mint-swipe {
+  height: 200px;
+  /* background-color: lawngreen; */
 }
-.mint-swipe img{
-    width: 100%;
-    height: 100%;
-
+.mint-swipe img {
+  width: 100%;
+  height: 100%;
 }
-.mui-table-view{
-    background-color: #fff;
-    border: none
+.mui-table-view {
+  background-color: #fff;
+  border: none;
 }
-.mui-table-view-cell{
-    border: none
+.mui-table-view-cell {
+  border: none;
 }
-.mui-table-view-cell img{
-width: 60px;
-height: 60px;
+.mui-table-view-cell img {
+  width: 60px;
+  height: 60px;
 }
-
 </style>
