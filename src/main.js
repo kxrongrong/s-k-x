@@ -26,6 +26,7 @@ Vue.filter('dateFormat',function(dataStr,pattern="YYYY_MM_DD HH:mm:ss"){
 Vue.use(VueResource)
 //添加一个根路径
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
+Vue.http.options.emulateJSON = true;
 
 // mint ui button
 import { Button } from 'mint-ui'
