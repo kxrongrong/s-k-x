@@ -27,6 +27,10 @@ Vue.use(VueResource)
 //添加一个根路径
 Vue.http.options.root = 'http://www.liulongbin.top:3005';
 
+// mint ui button
+import { Button } from 'mint-ui'
+Vue.component(Button.name, Button)
+
 //导入自己的路有模块
 import router from './router.js'
 // mint-ui中的头部模块

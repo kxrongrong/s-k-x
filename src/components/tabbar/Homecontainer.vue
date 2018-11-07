@@ -42,7 +42,7 @@ export default {
     getlunbotu() {
       //获取轮播图数据的方法
       this.$http
-        .get('http://www.liulongbin.top:3005/api/getlunbo')
+        .get('api/getlunbo')
         .then(result => {
           if (result.body.status === 0) {
             this.lunbotulist=result.body.message

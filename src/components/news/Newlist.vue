@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
+				<!-- <li class="mui-table-view-cell mui-media">
 					<a class="mui-navigate-right">
 						<img class="mui-media-object mui-pull-left" src="https://images.gitee.com/uploads/29/2269429_shaokexin.png?1541040670">
 						<div class="mui-media-body">
@@ -24,10 +24,11 @@
                             </p>
 						</div>
 					</a>
-				</li>
+				</li> -->
                  <li class="mui-table-view-cell mui-media" v-for="item in newlist" :key="item.id">
-					<router-link  to="'/home/newinfo/'+item.id">
-						<img class="mui-media-object mui-pull-left" src="https://images.gitee.com/uploads/29/2269429_shaokexin.png?1541040670">
+					<!-- 在这里因为是变量，所以加：，变成属性 -->
+                    <router-link :to="'/home/newinfo/'+item.id">
+						<img class="mui-media-object mui-pull-left" :src="item.img_url">
 						<div class="mui-media-body">
 							<h1>{{item.title}}</h1>
 							<p class="mui-ellipsis">
@@ -50,7 +51,7 @@ export default{
         }
     },
     created(){
-       getNewList() 
+       this.getNewList() 
     },
     methods:{
         getNewList(){
